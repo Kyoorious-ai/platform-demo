@@ -1,8 +1,14 @@
-import { Bot, X, MoreVertical, Mic, Send, Plus } from "lucide-react";
+import { Bot, X, MoreVertical, Mic, Send, Plus, Trash2, Download, Archive } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface ChatDialogProps {
   open: boolean;
@@ -24,9 +30,27 @@ export function ChatDialog({ open, onOpenChange }: ChatDialogProps) {
           <h3 className="text-foreground font-semibold">Kyoori</h3>
         </div>
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" className="h-7 w-7">
-            <MoreVertical className="h-4 w-4" />
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-7 w-7">
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem className="cursor-pointer">
+                <Archive className="mr-2 h-4 w-4" />
+                Archive Chat
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                <Download className="mr-2 h-4 w-4" />
+                Export Chat
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer text-destructive">
+                <Trash2 className="mr-2 h-4 w-4" />
+                Clear Chat
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button
             variant="ghost"
             size="icon"
