@@ -1,4 +1,4 @@
-import { Bot, X, MoreVertical, Mic, Send, Plus, Trash2, Download, Archive } from "lucide-react";
+import { Bot, X, MoreVertical, Mic, Send, Plus, MessageSquarePlus, Languages, History } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,18 +36,18 @@ export function ChatDialog({ open, onOpenChange }: ChatDialogProps) {
                 <MoreVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuContent align="end" className="w-48 bg-card border-border z-50">
               <DropdownMenuItem className="cursor-pointer">
-                <Archive className="mr-2 h-4 w-4" />
-                Archive Chat
+                <MessageSquarePlus className="mr-2 h-4 w-4" />
+                New chat
               </DropdownMenuItem>
               <DropdownMenuItem className="cursor-pointer">
-                <Download className="mr-2 h-4 w-4" />
-                Export Chat
+                <Languages className="mr-2 h-4 w-4" />
+                Language
               </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer text-destructive">
-                <Trash2 className="mr-2 h-4 w-4" />
-                Clear Chat
+              <DropdownMenuItem className="cursor-pointer">
+                <History className="mr-2 h-4 w-4" />
+                History
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
