@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { RefreshCw } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 const Test = () => {
+  const navigate = useNavigate();
   const [selectedChapter, setSelectedChapter] = useState<string>("");
   const [selectedDuration, setSelectedDuration] = useState<string>("");
 
@@ -21,7 +23,7 @@ const Test = () => {
   const handleStartTest = () => {
     if (isFormValid) {
       toast.success(`Starting test for ${selectedChapter} - ${selectedDuration}`);
-      // Navigate to test questions or start test logic here
+      navigate("/test-attempts");
     }
   };
 
