@@ -59,7 +59,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
