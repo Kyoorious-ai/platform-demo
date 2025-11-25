@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { RefreshCw } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -8,8 +9,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const Test = () => {
+  const [selectedChapter, setSelectedChapter] = useState<string>("");
+  const [selectedDuration, setSelectedDuration] = useState<string>("");
+
+  const isFormValid = selectedChapter && selectedDuration;
+
+  const handleStartTest = () => {
+    if (isFormValid) {
+      toast.success(`Starting test for ${selectedChapter} - ${selectedDuration}`);
+      // Navigate to test questions or start test logic here
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-8">
@@ -32,7 +47,7 @@ const Test = () => {
                 <label className="text-foreground text-lg font-medium w-48">
                   Chapter:
                 </label>
-                <Select>
+                <Select value={selectedChapter} onValueChange={setSelectedChapter}>
                   <SelectTrigger className="flex-1 h-14 bg-secondary/50 border-border text-muted-foreground rounded-lg">
                     <SelectValue placeholder="Select Chapter" />
                   </SelectTrigger>
@@ -48,7 +63,7 @@ const Test = () => {
                 <label className="text-foreground text-lg font-medium w-48">
                   Test Duration:
                 </label>
-                <Select>
+                <Select value={selectedDuration} onValueChange={setSelectedDuration}>
                   <SelectTrigger className="flex-1 h-14 bg-secondary/50 border-border text-muted-foreground rounded-lg">
                     <SelectValue placeholder="Select Test Duration" />
                   </SelectTrigger>
@@ -59,6 +74,16 @@ const Test = () => {
                     <SelectItem value="60min">60 Minutes</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+
+              <div className="flex justify-center pt-8">
+                <Button
+                  onClick={handleStartTest}
+                  disabled={!isFormValid}
+                  className="px-12 py-6 text-lg font-semibold"
+                >
+                  Start Test
+                </Button>
               </div>
             </div>
           </Card>
