@@ -16,13 +16,13 @@ import { toast } from "sonner";
 const Test = () => {
   const navigate = useNavigate();
   const [selectedChapter, setSelectedChapter] = useState<string>("");
-  const [selectedDuration, setSelectedDuration] = useState<string>("");
+  const testDuration = "30 Minutes"; // Fixed duration
 
-  const isFormValid = selectedChapter && selectedDuration;
+  const isFormValid = selectedChapter;
 
   const handleStartTest = () => {
     if (isFormValid) {
-      toast.success(`Starting test for ${selectedChapter} - ${selectedDuration}`);
+      toast.success(`Starting test for ${selectedChapter} - ${testDuration}`);
       navigate("/test-instructions");
     }
   };
@@ -65,17 +65,9 @@ const Test = () => {
                 <label className="text-foreground text-lg font-medium w-48">
                   Test Duration:
                 </label>
-                <Select value={selectedDuration} onValueChange={setSelectedDuration}>
-                  <SelectTrigger className="flex-1 h-14 bg-secondary/50 border-border text-muted-foreground rounded-lg">
-                    <SelectValue placeholder="Select Test Duration" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
-                    <SelectItem value="15min">15 Minutes</SelectItem>
-                    <SelectItem value="30min">30 Minutes</SelectItem>
-                    <SelectItem value="45min">45 Minutes</SelectItem>
-                    <SelectItem value="60min">60 Minutes</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="flex-1 h-14 bg-secondary/30 border border-border text-muted-foreground rounded-lg flex items-center px-4 cursor-not-allowed opacity-75">
+                  {testDuration}
+                </div>
               </div>
 
               <div className="flex justify-center pt-8">
