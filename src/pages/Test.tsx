@@ -23,7 +23,7 @@ const Test = () => {
   const handleStartTest = () => {
     if (isFormValid) {
       toast.success(`Starting test for ${selectedChapter} - ${selectedDuration}`);
-      navigate("/test-attempts");
+      navigate("/test-instructions");
     }
   };
 
