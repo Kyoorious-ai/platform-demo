@@ -6,7 +6,7 @@ const TestInstructions = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate("/test-taking");
+    navigate("/test-instructions-2");
   };
 
   return (
