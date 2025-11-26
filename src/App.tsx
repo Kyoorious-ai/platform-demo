@@ -8,6 +8,8 @@ import { AppSidebar } from "@/components/AppSidebar";
 import Index from "./pages/Index";
 import Test from "./pages/Test";
 import TestAttempts from "./pages/TestAttempts";
+import TestInstructions from "./pages/TestInstructions";
+import TestTaking from "./pages/TestTaking";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="/test-attempts" element={<TestAttempts />} />
+                <Route path="/test-instructions" element={<TestInstructions />} />
+                <Route path="/test-taking" element={<TestTaking />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
