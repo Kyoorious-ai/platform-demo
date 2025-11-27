@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import Index from "./pages/Index";
 import Test from "./pages/Test";
+import Study from "./pages/Study";
 import TestAttempts from "./pages/TestAttempts";
 import TestInstructions from "./pages/TestInstructions";
 import TestInstructions2 from "./pages/TestInstructions2";
@@ -28,6 +29,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/test" element={<Test />} />
+                <Route path="/study" element={<Study />} />
                 <Route path="/test-attempts" element={<TestAttempts />} />
                 <Route path="/test-instructions" element={<TestInstructions />} />
                 <Route path="/test-instructions-2" element={<TestInstructions2 />} />
