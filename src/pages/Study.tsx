@@ -1,5 +1,6 @@
 import { BookOpen } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,6 +13,7 @@ interface WeakConcept {
 }
 
 const Study = () => {
+  const navigate = useNavigate();
   const [readyForTest, setReadyForTest] = useState(false);
 
   // Mock data - replace with actual data from your backend
@@ -65,6 +67,7 @@ const Study = () => {
                   {concept.title}
                 </h3>
                 <Button
+                  onClick={() => navigate(`/study/${concept.id}`)}
                   className="px-8 py-2 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 rounded-full"
                 >
                   {concept.status === "not-started" ? "Start" : "Resume"}
