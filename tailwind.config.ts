@@ -47,6 +47,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        status: {
+          progressing: "hsl(var(--status-progressing))",
+          mastering: "hsl(var(--status-mastering))",
+          needfocus: "hsl(var(--status-needfocus))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

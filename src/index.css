@@ -36,6 +36,10 @@ All colors MUST be HSL.
     --input: 0 0% 15%;
     --ring: 84 81% 57%;
 
+    --status-progressing: 50 100% 50%;
+    --status-mastering: 84 81% 57%;
+    --status-needfocus: 0 84% 60%;
+
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 0%;
@@ -57,4 +61,20 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Progress bar status colors */
+.progress-progressing [data-state="complete"],
+.progress-progressing > div:last-child {
+  background-color: hsl(var(--status-progressing)) !important;
+}
+
+.progress-mastering [data-state="complete"],
+.progress-mastering > div:last-child {
+  background-color: hsl(var(--status-mastering)) !important;
+}
+
+.progress-needfocus [data-state="complete"],
+.progress-needfocus > div:last-child {
+  background-color: hsl(var(--status-needfocus)) !important;
 }

@@ -15,6 +15,7 @@ import TestAttempts from "./pages/TestAttempts";
 import TestInstructions from "./pages/TestInstructions";
 import TestInstructions2 from "./pages/TestInstructions2";
 import TestTaking from "./pages/TestTaking";
+import ReportCard from "./pages/ReportCard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="/test-instructions" element={<TestInstructions />} />
                 <Route path="/test-instructions-2" element={<TestInstructions2 />} />
                 <Route path="/test-taking" element={<TestTaking />} />
+                <Route path="/report-card" element={<ReportCard />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
