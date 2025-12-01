@@ -115,7 +115,17 @@ const TestTaking = () => {
         </div>
 
         {/* Question Content Area */}
-        <div className="flex-1 flex">
+        <div className="flex-1 flex relative">
+          {/* Hidden file input */}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileUpload}
+            accept="image/*,.pdf"
+            className="hidden"
+          />
+
+          {/* Question Content */}
           <div className="flex-1 p-12 overflow-y-auto">
             <div className="max-w-3xl">
               <div className="text-foreground space-y-6">
@@ -134,62 +144,53 @@ const TestTaking = () => {
                     <text x="135" y="175" fontSize="20" fill="black">D</text>
                   </svg>
                 </div>
-
-                {/* Upload Area - Only visible after submission */}
-                {isSubmitted && (
-                  <div className="mt-8">
-                    {/* Hidden file input */}
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      onChange={handleFileUpload}
-                      accept="image/*,.pdf"
-                      className="hidden"
-                    />
-                    
-                    {/* Dashed Upload Area */}
-                    <div 
-                      className="border-2 border-dashed border-primary rounded-lg p-12 flex flex-col items-center justify-center min-h-[300px] cursor-pointer hover:bg-primary/5 transition-colors"
-                      onClick={handleUploadClick}
-                    >
-                      {previewUrl ? (
-                        <div className="text-center">
-                          <img 
-                            src={previewUrl} 
-                            alt="Uploaded solution" 
-                            className="max-h-48 rounded-lg mb-4 mx-auto"
-                          />
-                          <p className="text-sm text-muted-foreground">{uploadedFile?.name}</p>
-                          <p className="text-xs text-primary mt-2">Click to change file</p>
-                        </div>
-                      ) : (
-                        <Button 
-                          variant="secondary" 
-                          size="lg"
-                          className="text-lg px-8 py-6 bg-muted-foreground/30 hover:bg-muted-foreground/40 text-foreground"
-                        >
-                          <Upload className="mr-2 h-5 w-5" />
-                          Upload Solution Sheet
-                        </Button>
-                      )}
-                    </div>
-
-                    {/* Evaluate Button */}
-                    <div className="flex justify-center mt-8">
-                      <Button 
-                        onClick={handleEvaluate}
-                        variant="secondary"
-                        size="lg"
-                        className="px-16 py-6 text-lg font-semibold bg-muted-foreground/30 hover:bg-muted-foreground/40 text-foreground rounded-lg"
-                      >
-                        Evaluate
-                      </Button>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
+
+          {/* Full Screen Upload Overlay - Only visible after submission */}
+          {isSubmitted && (
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-sm flex flex-col items-center justify-center z-10">
+              {/* Dashed Upload Area */}
+              <div 
+                className="border-2 border-dashed border-primary rounded-lg p-16 flex flex-col items-center justify-center min-h-[400px] min-w-[600px] cursor-pointer hover:bg-primary/5 transition-colors"
+                onClick={handleUploadClick}
+              >
+                {previewUrl ? (
+                  <div className="text-center">
+                    <img 
+                      src={previewUrl} 
+                      alt="Uploaded solution" 
+                      className="max-h-64 rounded-lg mb-4 mx-auto"
+                    />
+                    <p className="text-sm text-muted-foreground">{uploadedFile?.name}</p>
+                    <p className="text-xs text-primary mt-2">Click to change file</p>
+                  </div>
+                ) : (
+                  <Button 
+                    variant="secondary" 
+                    size="lg"
+                    className="text-xl px-12 py-8 bg-muted-foreground/30 hover:bg-muted-foreground/40 text-foreground"
+                  >
+                    <Upload className="mr-3 h-6 w-6" />
+                    Upload Solution Sheet
+                  </Button>
+                )}
+              </div>
+
+              {/* Evaluate Button */}
+              <div className="mt-12">
+                <Button 
+                  onClick={handleEvaluate}
+                  variant="secondary"
+                  size="lg"
+                  className="px-20 py-8 text-xl font-semibold bg-muted-foreground/30 hover:bg-muted-foreground/40 text-foreground rounded-lg"
+                >
+                  Evaluate
+                </Button>
+              </div>
+            </div>
+          )}
 
           {/* Right Sidebar */}
           <div className="w-80 bg-card border-l border-border p-8 flex flex-col justify-between">
