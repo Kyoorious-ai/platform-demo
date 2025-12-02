@@ -1,5 +1,5 @@
-import { Sun, Moon, User, Zap, GraduationCap, LogOut } from "lucide-react";
-import { Switch } from "@/components/ui/switch";
+import { Sun, User, Zap, GraduationCap, LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -16,9 +16,17 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <Sun className="h-5 w-5 text-muted-foreground" />
-        <Switch />
-        <Moon className="h-5 w-5 text-muted-foreground" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-10 w-10 rounded-full hover:bg-secondary"
+          onClick={() => {
+            // Toggle theme logic here
+            console.log("Theme toggle clicked");
+          }}
+        >
+          <Sun className="h-5 w-5 text-primary" />
+        </Button>
         <span className="text-sm text-foreground ml-2">Hi, Avush Sharma</span>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

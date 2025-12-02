@@ -1,10 +1,13 @@
-import { Home, FlaskConical, BookOpen, PenTool, CreditCard } from "lucide-react";
+import { Home, FlaskConical, BookOpen, PenTool, CreditCard, LayoutDashboard } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -19,6 +22,8 @@ const navItems = [
 ];
 
 export function AppSidebar() {
+  const [mode, setMode] = useState<"learn" | "exam">("learn");
+
   return (
     <Sidebar className="border-r border-border">
       <SidebarContent className="pt-6">
@@ -28,7 +33,41 @@ export function AppSidebar() {
           </h1>
         </div>
 
+        {/* Mode Toggle */}
+        <div className="px-6 mb-6">
+          <div className="flex gap-2 rounded-lg border border-border p-1">
+            <Button
+              variant={mode === "learn" ? "default" : "ghost"}
+              className={`flex-1 ${mode === "learn" ? "bg-primary text-primary-foreground hover:bg-primary/90" : "text-muted-foreground hover:text-foreground"}`}
+              onClick={() => setMode("learn")}
+            >
+              Learn Mode
+            </Button>
+            <Button
+              variant={mode === "exam" ? "default" : "ghost"}
+              className={`flex-1 ${mode === "exam" ? "bg-primary text-primary-foreground hover:bg-primary/90" : "text-muted-foreground hover:text-foreground"}`}
+              onClick={() => setMode("exam")}
+            >
+              Exam Mode
+            </Button>
+          </div>
+        </div>
+
+        {/* Dashboard Button */}
+        <div className="px-6 mb-6">
+          <Button
+            variant="outline"
+            className="w-full justify-start gap-3 border-border hover:bg-secondary/50"
+          >
+            <LayoutDashboard className="h-5 w-5" />
+            Dashboard
+          </Button>
+        </div>
+
         <SidebarGroup>
+          <SidebarGroupLabel className="px-6 text-muted-foreground text-sm mb-2">
+            Chapter Focus
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => (
