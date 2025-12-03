@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Keyboard, Mic, Paperclip, PenTool, Sun } from "lucide-react";
+import { ArrowLeft, Plus, Mic, Send, PenTool, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -93,18 +94,25 @@ const PracticeContent = () => {
         </Card>
       </div>
 
-      {/* Bottom toolbar */}
+      {/* Bottom prompt box */}
       <div className="fixed bottom-0 left-0 right-0 p-6">
-        <div className="flex justify-center gap-4">
-          <button className="w-12 h-12 rounded-full bg-primary/80 flex items-center justify-center hover:bg-primary transition-colors">
-            <Keyboard className="h-5 w-5 text-primary-foreground" />
-          </button>
-          <button className="w-12 h-12 rounded-full bg-primary/80 flex items-center justify-center hover:bg-primary transition-colors">
-            <Mic className="h-5 w-5 text-primary-foreground" />
-          </button>
-          <button className="w-12 h-12 rounded-full bg-transparent border-2 border-primary flex items-center justify-center hover:bg-primary/20 transition-colors">
-            <Paperclip className="h-5 w-5 text-primary" />
-          </button>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 bg-card border border-border rounded-full px-4 py-3">
+            <button className="w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+              <Plus className="h-5 w-5" />
+            </button>
+            <input
+              type="text"
+              placeholder="Ask your doubt"
+              className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground"
+            />
+            <button className="w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+              <Mic className="h-5 w-5" />
+            </button>
+            <button className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 transition-colors">
+              <Send className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
