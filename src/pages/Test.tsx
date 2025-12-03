@@ -82,6 +82,17 @@ const Test = () => {
             </div>
           </Card>
         </div>
+
+        {/* Previous Tests Button */}
+        <div className="flex justify-center mt-8">
+          <Button
+            variant="outline"
+            onClick={() => navigate("/test-attempts")}
+            className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+          >
+            Previous Tests
+          </Button>
+        </div>
       </div>
     </div>
   );
