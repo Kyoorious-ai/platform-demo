@@ -1,13 +1,14 @@
 import { LucideIcon } from "lucide-react";
 
-interface SubjectCardProps {
+export interface SubjectCardProps {
   name: string;
   icon: LucideIcon;
   activeChapter: string;
   isActive?: boolean;
+  showActive?: boolean;
 }
 
-export function SubjectCard({ name, icon: Icon, activeChapter, isActive = false }: SubjectCardProps) {
+export function SubjectCard({ name, icon: Icon, activeChapter, isActive = false, showActive = true }: SubjectCardProps) {
   return (
     <div 
       className={`rounded-2xl border-2 p-6 flex flex-col items-center gap-3 transition-all hover:border-primary cursor-pointer ${
@@ -19,7 +20,9 @@ export function SubjectCard({ name, icon: Icon, activeChapter, isActive = false 
         <h3 className={`text-lg font-semibold mb-1 ${isActive ? 'text-primary' : 'text-foreground'}`}>
           {name}
         </h3>
-        <p className="text-xs text-muted-foreground">Active: {activeChapter}</p>
+        {showActive && (
+          <p className="text-xs text-muted-foreground">Active: {activeChapter}</p>
+        )}
       </div>
     </div>
   );
