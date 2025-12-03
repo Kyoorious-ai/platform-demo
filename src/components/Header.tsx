@@ -1,4 +1,4 @@
-import { Sun, User, Zap, GraduationCap, LogOut } from "lucide-react";
+import { Sun, User, Zap, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -47,10 +47,6 @@ export function Header() {
                 <DropdownMenuItem className="cursor-pointer">
                   <Zap className="mr-2 h-4 w-4" />
                   Pro Mode
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <GraduationCap className="mr-2 h-4 w-4" />
-                  Learn Mode
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
                   <LogOut className="mr-2 h-4 w-4" />
