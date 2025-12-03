@@ -7,29 +7,26 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const subjects = [
-  "Mathematics",
-  "Physics",
-  "Chemistry",
-  "Biology",
-  "English",
-  "History",
+const chapters = [
+  "Surface Area and Volumes",
+  "Algebra",
+  "Polynomials",
 ];
 
 export function SubjectDropdown() {
   return (
-    <Select defaultValue="Mathematics">
+    <Select defaultValue="Surface Area and Volumes">
       <SelectTrigger className="w-[280px] h-14 bg-card border-border text-primary text-2xl font-semibold">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="bg-card border-border">
-        {subjects.map((subject) => (
+      <SelectContent className="bg-card border-border z-50">
+        {chapters.map((chapter) => (
           <SelectItem
-            key={subject}
-            value={subject}
+            key={chapter}
+            value={chapter}
             className="text-foreground text-lg hover:bg-secondary cursor-pointer"
           >
-            {subject}
+            {chapter}
           </SelectItem>
         ))}
       </SelectContent>

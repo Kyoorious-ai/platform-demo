@@ -65,9 +65,9 @@ const Test = () => {
                     <SelectValue placeholder="Select Chapter" />
                   </SelectTrigger>
                   <SelectContent className="bg-card border-border z-50">
-                    <SelectItem value="chapter1">Chapter 1</SelectItem>
-                    <SelectItem value="chapter2">Chapter 2</SelectItem>
-                    <SelectItem value="chapter3">Chapter 3</SelectItem>
+                    <SelectItem value="surface-area-volumes">Surface Area and Volumes</SelectItem>
+                    <SelectItem value="algebra">Algebra</SelectItem>
+                    <SelectItem value="polynomials">Polynomials</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
