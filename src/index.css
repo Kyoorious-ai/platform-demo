@@ -39,6 +39,8 @@ All colors MUST be HSL.
     --status-progressing: 50 100% 50%;
     --status-mastering: 84 81% 57%;
     --status-needfocus: 0 84% 60%;
+    
+    --gold: 51 100% 50%;
 
     --radius: 0.5rem;
 

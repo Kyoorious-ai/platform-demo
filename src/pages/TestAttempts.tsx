@@ -74,7 +74,7 @@ const TestAttempts = () => {
                 </div>
                 <div className="text-right space-y-4">
                   {attempt.status === "completed" ? (
-                    <button className="text-primary text-lg font-medium underline underline-offset-4 hover:text-primary/80 transition-colors">
+                    <button className="text-gold text-lg font-medium underline underline-offset-4 hover:text-gold/80 transition-colors">
                       Check Performance
                     </button>
                   ) : (
