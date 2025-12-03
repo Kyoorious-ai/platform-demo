@@ -12,6 +12,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
+import kyooriousLogo from "@/assets/kyoorious-logo.png";
 
 const navItems = [
   { title: "Test", url: "/test", icon: FlaskConical },
@@ -27,9 +28,7 @@ export function AppSidebar() {
     <Sidebar className="border-r border-border">
       <SidebarContent className="pt-6 flex flex-col h-full">
         <div className="px-6 mb-8">
-          <h1 className="text-xl font-bold text-foreground">
-            ky<span className="inline-flex items-center"><span className="w-2 h-2 bg-primary rounded-full mx-0.5"></span><span className="w-2 h-2 bg-primary rounded-full mr-0.5"></span></span>rious.ai
-          </h1>
+          <img src={kyooriousLogo} alt="kyoorious.ai" className="h-8" />
         </div>
 
         {/* Mode Toggle */}
