@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Camera, FileText, Info, Clock, Upload } from "lucide-react";
+import { Camera, FileText, Info, Clock, Upload, ArrowLeft, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ const TestTaking = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [showReview, setShowReview] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const totalQuestions = 3;
@@ -77,6 +78,130 @@ const TestTaking = () => {
       setShowResults(true);
     }, 5000);
   };
+
+  // Review data
+  const reviewData = [
+    { question: "Q.1", totalMarks: 1, yourMarks: 0, remarks: "You used the wrong formula. Just revise the correct TSA and CSA formulas once." },
+    { question: "Q.2", totalMarks: 1, yourMarks: 0, remarks: "The numbers were not substituted correctly. Read the values carefully next time." },
+    { question: "Q.3", totalMarks: 1, yourMarks: 1, remarks: "Great job. Your steps and final answer are correct." },
+    { question: "Q.4", totalMarks: 2, yourMarks: 1, remarks: "Your method was right but you made a small calculation mistake in the middle step." },
+    { question: "Q.5", totalMarks: 2, yourMarks: 1.5, remarks: "Very close. You understood the idea but added one part incorrectly." },
+    { question: "Q.6", totalMarks: 3, yourMarks: 2.5, remarks: "Good attempt. Only a tiny unit mistake reduced your marks." },
+  ];
+
+  const totalScore = reviewData.reduce((sum, q) => sum + q.yourMarks, 0);
+  const maxScore = reviewData.reduce((sum, q) => sum + q.totalMarks, 0);
+
+  // Review Screen
+  if (showReview) {
+    return (
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setShowReview(false)}
+              className="text-primary hover:text-primary/80"
+            >
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+            {/* Robot Icon */}
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 40 40" fill="none">
+                <rect x="8" y="12" width="24" height="20" rx="4" fill="#a3e635"/>
+                <circle cx="15" cy="20" r="5" fill="white"/>
+                <circle cx="25" cy="20" r="5" fill="white"/>
+                <circle cx="15" cy="20" r="2" fill="black"/>
+                <circle cx="25" cy="20" r="2" fill="black"/>
+              </svg>
+            </div>
+            <h1 className="text-2xl font-bold text-foreground">Review</h1>
+          </div>
+          <div className="flex items-center gap-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-primary">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Left Sidebar */}
+        <div className="flex">
+          <div className="w-16 flex flex-col items-center py-6 space-y-4">
+            <button className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary">
+              <Home className="w-5 h-5" />
+            </button>
+            <button className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary">
+              <Clock className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 px-8 py-6">
+            {/* Score Summary */}
+            <div className="flex items-center gap-8 mb-8">
+              <div className="flex items-center gap-4">
+                <span className="text-xl text-foreground">Your score:</span>
+                {/* Score Circle */}
+                <div className="w-16 h-16 rounded-full border-4 border-destructive flex items-center justify-center">
+                  <div className="text-center">
+                    <span className="text-xl font-bold text-destructive">{totalScore}</span>
+                    <div className="w-8 border-t border-destructive mx-auto" />
+                    <span className="text-sm text-destructive">{maxScore}</span>
+                  </div>
+                </div>
+                <span className="text-xl font-bold text-primary">PASS</span>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <span className="text-foreground">Time taken:</span>
+                <span className="text-xl font-bold text-primary">29 minutes</span>
+              </div>
+
+              <Button 
+                variant="outline" 
+                className="ml-auto px-8 py-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+              >
+                Answer Key
+              </Button>
+            </div>
+
+            {/* Review Table */}
+            <div className="border-2 border-primary rounded-xl overflow-hidden">
+              {/* Table Header */}
+              <div className="grid grid-cols-4 bg-background border-b border-primary">
+                <div className="px-6 py-4 text-center">
+                  <span className="text-primary font-bold">Question<br />number</span>
+                </div>
+                <div className="px-6 py-4 text-center border-l border-primary">
+                  <span className="text-primary font-bold">Total<br />Marks</span>
+                </div>
+                <div className="px-6 py-4 text-center border-l border-primary">
+                  <span className="text-primary font-bold">Your<br />Marks</span>
+                </div>
+                <div className="px-6 py-4 text-center border-l border-primary">
+                  <span className="text-destructive font-bold">Remarks</span>
+                </div>
+              </div>
+
+              {/* Table Body */}
+              {reviewData.map((row, index) => (
+                <div 
+                  key={row.question}
+                  className={`grid grid-cols-4 ${index < reviewData.length - 1 ? 'border-b border-border' : ''}`}
+                >
+                  <div className="px-6 py-6 text-center text-foreground">{row.question}</div>
+                  <div className="px-6 py-6 text-center text-foreground border-l border-border">{row.totalMarks}</div>
+                  <div className="px-6 py-6 text-center text-foreground border-l border-border">{row.yourMarks}</div>
+                  <div className="px-6 py-6 text-foreground border-l border-border">{row.remarks}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Results Screen
   if (showResults) {
@@ -149,6 +274,7 @@ const TestTaking = () => {
               <Button 
                 variant="outline" 
                 className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+                onClick={() => setShowReview(true)}
               >
                 Review
               </Button>
