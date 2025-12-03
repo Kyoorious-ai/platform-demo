@@ -1,7 +1,8 @@
 import { FlaskConical, BookOpen, PenTool, CreditCard, LayoutDashboard } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useMode } from "@/contexts/ModeContext";
 import {
   Sidebar,
   SidebarContent,
@@ -21,11 +22,11 @@ const navItems = [
 ];
 
 export function AppSidebar() {
-  const [mode, setMode] = useState<"learn" | "exam">("learn");
+  const { mode, setMode } = useMode();
 
   return (
     <Sidebar className="border-r border-border">
-      <SidebarContent className="pt-6">
+      <SidebarContent className="pt-6 flex flex-col h-full">
         <div className="px-6 mb-8">
           <h1 className="text-xl font-bold text-foreground">
             ky<span className="inline-flex items-center"><span className="w-2 h-2 bg-primary rounded-full mx-0.5"></span><span className="w-2 h-2 bg-primary rounded-full mr-0.5"></span></span>rious.ai
@@ -67,7 +68,7 @@ export function AppSidebar() {
 
         <SidebarGroup>
           <SidebarGroupLabel className="px-6 text-muted-foreground text-sm mb-2">
-            Chapter Focus
+            {mode === "exam" ? "Subject Focus" : "Chapter Focus"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -89,6 +90,23 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {/* User Profile at bottom - only in Exam Mode */}
+        {mode === "exam" && (
+          <div className="mt-auto px-6 pb-6">
+            <div className="flex items-center gap-3">
+              <Avatar className="h-12 w-12 bg-primary">
+                <AvatarFallback className="bg-primary text-primary-foreground font-bold">
+                  A
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="text-foreground font-medium">Aayush Sharma</p>
+                <p className="text-muted-foreground text-sm">Class 10</p>
+              </div>
+            </div>
+          </div>
+        )}
       </SidebarContent>
     </Sidebar>
   );
