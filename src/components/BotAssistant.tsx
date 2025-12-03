@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ChatDialog } from "@/components/ChatDialog";
+import chatbotLogo from "@/assets/chatbot-logo.png";
 
 export function BotAssistant() {
   const [open, setOpen] = useState(false);
@@ -10,10 +10,10 @@ export function BotAssistant() {
     <>
       <Button
         size="icon"
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-muted hover:bg-muted/80 shadow-lg"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-muted hover:bg-muted/80 shadow-lg p-0 overflow-hidden"
         onClick={() => setOpen(true)}
       >
-        <Bot className="h-7 w-7 text-primary" />
+        <img src={chatbotLogo} alt="Chat assistant" className="w-full h-full object-cover" />
       </Button>
       <ChatDialog open={open} onOpenChange={setOpen} />
     </>
