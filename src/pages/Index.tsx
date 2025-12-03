@@ -7,15 +7,21 @@ import { Badge } from "@/components/ui/badge";
 import { Calculator, Microscope, Users, BookOpen, GraduationCap, TrendingDown, Flame, FileCheck } from "lucide-react";
 import { useMode } from "@/contexts/ModeContext";
 
+import mathematicsPortrait from "@/assets/portraits/mathematics.png";
+import sciencePortrait from "@/assets/portraits/science.png";
+import socialSciencePortrait from "@/assets/portraits/social-science.png";
+import hindiPortrait from "@/assets/portraits/hindi.png";
+import englishPortrait from "@/assets/portraits/english.png";
+
 const Index = () => {
   const { mode } = useMode();
 
   const subjects = [
-    { name: "Mathematics", icon: Calculator, activeChapter: "Surface Area and Volumes", isActive: true },
-    { name: "Science", icon: Microscope, activeChapter: "Electricity" },
-    { name: "Social Science", icon: Users, activeChapter: "-" },
-    { name: "Hindi", icon: BookOpen, activeChapter: "Electricity" },
-    { name: "English", icon: GraduationCap, activeChapter: "Electricity" },
+    { name: "Mathematics", icon: Calculator, activeChapter: "Surface Area and Volumes", isActive: true, portrait: mathematicsPortrait },
+    { name: "Science", icon: Microscope, activeChapter: "Electricity", portrait: sciencePortrait },
+    { name: "Social Science", icon: Users, activeChapter: "-", portrait: socialSciencePortrait },
+    { name: "Hindi", icon: BookOpen, activeChapter: "Electricity", portrait: hindiPortrait },
+    { name: "English", icon: GraduationCap, activeChapter: "Electricity", portrait: englishPortrait },
   ];
 
   return (
