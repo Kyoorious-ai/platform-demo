@@ -11,17 +11,27 @@ import {
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useMode } from "@/contexts/ModeContext";
 
 const Test = () => {
   const navigate = useNavigate();
+  const { mode } = useMode();
   const [selectedChapter, setSelectedChapter] = useState<string>("");
-  const testDuration = "30 Minutes"; // Fixed duration
+  const [selectedDuration, setSelectedDuration] = useState<string>("1-hour");
+  
+  const isLearnMode = mode === "learn";
+  const testDuration = isLearnMode ? "30 Minutes" : selectedDuration;
 
-  const isFormValid = selectedChapter;
+  const isFormValid = isLearnMode 
+    ? selectedChapter 
+    : selectedChapter && selectedDuration;
 
   const handleStartTest = () => {
     if (isFormValid) {
-      toast.success(`Starting test for ${selectedChapter} - ${testDuration}`);
+      const durationLabel = isLearnMode 
+        ? "30 Minutes" 
+        : selectedDuration === "1-hour" ? "1 Hour" : "3 Hours";
+      toast.success(`Starting test for ${selectedChapter} - ${durationLabel}`);
       navigate("/test-instructions");
     }
   };
@@ -54,7 +64,7 @@ const Test = () => {
                   <SelectTrigger className="flex-1 h-14 bg-secondary/50 border-border text-muted-foreground rounded-lg">
                     <SelectValue placeholder="Select Chapter" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
+                  <SelectContent className="bg-card border-border z-50">
                     <SelectItem value="chapter1">Chapter 1</SelectItem>
                     <SelectItem value="chapter2">Chapter 2</SelectItem>
                     <SelectItem value="chapter3">Chapter 3</SelectItem>
@@ -66,9 +76,21 @@ const Test = () => {
                 <label className="text-foreground text-lg font-medium w-48">
                   Test Duration:
                 </label>
-                <div className="flex-1 h-14 bg-secondary/30 border border-border text-muted-foreground rounded-lg flex items-center px-4 cursor-not-allowed opacity-75">
-                  {testDuration}
-                </div>
+                {isLearnMode ? (
+                  <div className="flex-1 h-14 bg-secondary/30 border border-border text-muted-foreground rounded-lg flex items-center px-4 cursor-not-allowed opacity-75">
+                    {testDuration}
+                  </div>
+                ) : (
+                  <Select value={selectedDuration} onValueChange={setSelectedDuration}>
+                    <SelectTrigger className="flex-1 h-14 bg-secondary/50 border-border text-muted-foreground rounded-lg">
+                      <SelectValue placeholder="Select Duration" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-border z-50">
+                      <SelectItem value="1-hour">1 Hour</SelectItem>
+                      <SelectItem value="3-hours">3 Hours</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
               </div>
 
               <div className="flex justify-center pt-8">
@@ -84,16 +106,18 @@ const Test = () => {
           </Card>
         </div>
 
-        {/* Previous Tests Button */}
-        <div className="flex justify-center mt-8">
-          <Button
-            variant="outline"
-            onClick={() => navigate("/test-attempts")}
-            className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
-          >
-            Previous Tests
-          </Button>
-        </div>
+        {/* Previous Tests Button - Only in Learn Mode */}
+        {isLearnMode && (
+          <div className="flex justify-center mt-8">
+            <Button
+              variant="outline"
+              onClick={() => navigate("/test-attempts")}
+              className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+            >
+              Previous Tests
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
