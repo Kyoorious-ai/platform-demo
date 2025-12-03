@@ -52,6 +52,7 @@ export default {
           mastering: "hsl(var(--status-mastering))",
           needfocus: "hsl(var(--status-needfocus))",
         },
+        gold: "hsl(var(--gold))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
