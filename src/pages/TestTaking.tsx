@@ -265,25 +265,41 @@ const TestTaking = () => {
           {/* Results Content */}
           <div className="flex-1 px-12 py-8">
             {/* Title */}
-            <h1 className="text-4xl font-bold text-destructive italic mb-8">
+            <h1 className="text-4xl font-bold text-destructive italic mb-4">
               Surface Area Volume
             </h1>
 
-            {/* Action Buttons */}
-            <div className="flex gap-4 mb-8">
-              <Button 
-                variant="outline" 
-                className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
-                onClick={() => setShowReview(true)}
-              >
-                Review
-              </Button>
-              <Button 
-                variant="outline" 
-                className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
-              >
-                Answer Key
-              </Button>
+            {/* Score Display */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-4">
+                <span className="text-xl text-foreground">Your score:</span>
+                {/* Score Circle */}
+                <div className="w-14 h-14 rounded-full border-4 border-muted-foreground flex items-center justify-center bg-muted">
+                  <div className="text-center leading-tight">
+                    <span className="text-lg font-bold text-destructive">{totalScore}</span>
+                    <div className="w-6 border-t border-muted-foreground mx-auto" />
+                    <span className="text-sm text-foreground">{maxScore}</span>
+                  </div>
+                </div>
+                <span className="text-2xl font-bold text-primary">PASS</span>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4">
+                <Button 
+                  variant="outline" 
+                  className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+                  onClick={() => setShowReview(true)}
+                >
+                  Review
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="px-12 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+                >
+                  Answer Key
+                </Button>
+              </div>
             </div>
 
             <div className="border-t border-border mb-8" />
