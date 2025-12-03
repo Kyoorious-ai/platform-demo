@@ -274,14 +274,14 @@ const TestTaking = () => {
               <div className="flex items-center gap-4">
                 <span className="text-xl text-foreground">Your score:</span>
                 {/* Score Circle */}
-                <div className="w-14 h-14 rounded-full border-4 border-muted-foreground flex items-center justify-center bg-muted">
+                <div className="w-14 h-14 rounded-full border-4 border-destructive flex items-center justify-center bg-muted">
                   <div className="text-center leading-tight">
                     <span className="text-lg font-bold text-destructive">{totalScore}</span>
-                    <div className="w-6 border-t border-muted-foreground mx-auto" />
-                    <span className="text-sm text-foreground">{maxScore}</span>
+                    <div className="w-6 border-t border-destructive mx-auto" />
+                    <span className="text-sm text-destructive">{maxScore}</span>
                   </div>
                 </div>
-                <span className="text-2xl font-bold text-primary">PASS</span>
+                <span className="text-2xl font-bold text-destructive">PASS</span>
               </div>
 
               {/* Action Buttons */}
