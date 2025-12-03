@@ -95,7 +95,7 @@ const PracticeContent = () => {
       </div>
 
       {/* Bottom prompt box */}
-      <div className="fixed bottom-0 left-0 right-0 p-6">
+      <div className="fixed bottom-0 left-64 right-0 p-6">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 bg-card border border-border rounded-full px-4 py-3">
             <button className="w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
