@@ -8,16 +8,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLocation } from "react-router-dom";
-import kyooriousLogo from "@/assets/kyoorious-logo.png";
 
 export function Header() {
   const location = useLocation();
   const isDashboard = location.pathname === "/";
 
   return (
-    <header className="h-16 border-b border-border flex items-center justify-between px-6">
-      <img src={kyooriousLogo} alt="kyoorious.ai" className="h-8" />
-
+    <header className="h-16 border-b border-border flex items-center justify-end px-6">
       <div className="flex items-center gap-4">
         <Button
           variant="ghost"
