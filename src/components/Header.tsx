@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLocation } from "react-router-dom";
+import kyooriousLogo from "@/assets/kyoorious-logo.png";
 
 export function Header() {
   const location = useLocation();
@@ -15,9 +16,7 @@ export function Header() {
 
   return (
     <header className="h-16 border-b border-border flex items-center justify-between px-6">
-      <div className="text-xl font-bold">
-        ky<span className="inline-flex items-center"><span className="w-2 h-2 bg-primary rounded-full mx-0.5"></span><span className="w-2 h-2 bg-primary rounded-full mr-0.5"></span></span>rious.ai
-      </div>
+      <img src={kyooriousLogo} alt="kyoorious.ai" className="h-8" />
 
       <div className="flex items-center gap-4">
         <Button
