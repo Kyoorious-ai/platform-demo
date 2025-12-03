@@ -1,6 +1,5 @@
 import { FlaskConical, BookOpen, PenTool, CreditCard, LayoutDashboard } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMode } from "@/contexts/ModeContext";
 import {
   Sidebar,
@@ -95,22 +94,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* User Profile at bottom - only in Exam Mode */}
-        {mode === "exam" && (
-          <div className="mt-auto px-6 pb-6">
-            <div className="flex items-center gap-3">
-              <Avatar className="h-12 w-12 bg-primary">
-                <AvatarFallback className="bg-primary text-primary-foreground font-bold">
-                  A
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="text-foreground font-medium">Aayush Sharma</p>
-                <p className="text-muted-foreground text-sm">Class 10</p>
-              </div>
-            </div>
-          </div>
-        )}
       </SidebarContent>
     </Sidebar>
   );
