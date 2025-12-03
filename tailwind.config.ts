@@ -65,6 +65,7 @@ export default {
       },
       fontFamily: {
         sans: ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+        regular: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
