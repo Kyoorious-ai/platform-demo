@@ -1,4 +1,4 @@
-import { Home, FlaskConical, BookOpen, PenTool, CreditCard, LayoutDashboard } from "lucide-react";
+import { FlaskConical, BookOpen, PenTool, CreditCard, LayoutDashboard } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/sidebar";
 
 const navItems = [
-  { title: "Home", url: "/", icon: Home },
   { title: "Test", url: "/test", icon: FlaskConical },
   { title: "Study", url: "/study", icon: BookOpen },
   { title: "Practice", url: "/practice", icon: PenTool },
@@ -55,13 +54,15 @@ export function AppSidebar() {
 
         {/* Dashboard Button */}
         <div className="px-6 mb-6">
-          <Button
-            variant="outline"
-            className="w-full justify-start gap-3 border-border hover:bg-secondary/50"
+          <NavLink
+            to="/"
+            end
+            className="flex items-center gap-3 w-full px-4 py-3 rounded-md border border-border text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-colors"
+            activeClassName="bg-primary text-white border-primary"
           >
             <LayoutDashboard className="h-5 w-5" />
             Dashboard
-          </Button>
+          </NavLink>
         </div>
 
         <SidebarGroup>
