@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RefreshCw } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { RefreshCw, Sun } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -35,11 +34,13 @@ const Test = () => {
             <RefreshCw className="h-5 w-5 text-foreground" />
             <h1 className="text-xl font-semibold text-foreground">Test</h1>
           </div>
-          <Avatar className="h-12 w-12 bg-primary">
-            <AvatarFallback className="bg-primary text-primary-foreground text-xl font-bold">
-              A
-            </AvatarFallback>
-          </Avatar>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-10 w-10 rounded-full hover:bg-secondary"
+          >
+            <Sun className="h-5 w-5 text-primary" />
+          </Button>
         </div>
 
         <div className="flex items-center justify-center">
