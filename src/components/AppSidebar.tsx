@@ -1,6 +1,5 @@
 import { FlaskConical, BookOpen, PenTool, CreditCard, LayoutDashboard } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useMode } from "@/contexts/ModeContext";
 import {
@@ -34,22 +33,28 @@ export function AppSidebar() {
         </div>
 
         {/* Mode Toggle */}
-        <div className="px-6 mb-6">
-          <div className="flex gap-2 rounded-lg border border-border p-1">
-            <Button
-              variant={mode === "learn" ? "default" : "ghost"}
-              className={`flex-1 ${mode === "learn" ? "bg-primary text-primary-foreground hover:bg-primary/90" : "text-muted-foreground hover:text-foreground"}`}
+        <div className="px-4 mb-6">
+          <div className="flex rounded-full border-2 border-border bg-background overflow-hidden">
+            <button
+              className={`flex-1 px-4 py-2 text-sm font-medium transition-all rounded-full ${
+                mode === "learn" 
+                  ? "bg-primary text-primary-foreground" 
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
               onClick={() => setMode("learn")}
             >
               Learn Mode
-            </Button>
-            <Button
-              variant={mode === "exam" ? "default" : "ghost"}
-              className={`flex-1 ${mode === "exam" ? "bg-primary text-primary-foreground hover:bg-primary/90" : "text-muted-foreground hover:text-foreground"}`}
+            </button>
+            <button
+              className={`flex-1 px-4 py-2 text-sm font-medium transition-all rounded-full ${
+                mode === "exam" 
+                  ? "bg-primary text-primary-foreground" 
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
               onClick={() => setMode("exam")}
             >
               Exam Mode
-            </Button>
+            </button>
           </div>
         </div>
 
