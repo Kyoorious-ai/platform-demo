@@ -296,6 +296,10 @@ const TestTaking = () => {
               <Button 
                 variant="outline" 
                 className="ml-auto px-8 py-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full"
+                onClick={() => {
+                  setShowReview(false);
+                  setShowAnswerKey(true);
+                }}
               >
                 Answer Key
               </Button>
